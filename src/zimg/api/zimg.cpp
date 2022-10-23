@@ -457,6 +457,9 @@ zimg::graph::GraphBuilder::params import_graph_params(const zimg_graph_builder_p
 	if (src.version >= API_VERSION_2_2) {
 		params.peak_luminance = src.nominal_peak_luminance;
 		params.approximate_gamma = !!src.allow_approximate_gamma;
+
+		// Change to make it compile with avsresize
+		params.scene_referred = src.scene_referred;
 	}
 
 	return params;
