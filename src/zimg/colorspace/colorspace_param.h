@@ -28,6 +28,7 @@ constexpr double REC_470_M_PRIMARIES[3][2] = { { 0.670, 0.330 }, { 0.210, 0.710 
 constexpr double REC_470_BG_PRIMARIES[3][2] = { { 0.640, 0.330 }, { 0.290, 0.600 }, { 0.150, 0.060 } };
 constexpr double SMPTE_C_PRIMARIES[3][2] = { { 0.630, 0.340 }, { 0.310, 0.595 }, { 0.155, 0.070 } };
 constexpr double REC_709_PRIMARIES[3][2] = { { 0.640, 0.330 }, { 0.300, 0.600 }, { 0.150, 0.060 } };
+constexpr double PROPHOTORGB_PRIMARIES[3][2] = { { 0.734699, 0.265301 }, { 0.159597, 0.840403 }, { 0.036598, 0.000105 } };
 constexpr double FILM_PRIMARIES[3][2] = { { 0.681, 0.319 }, { 0.243, 0.692 }, { 0.145, 0.049 } };
 constexpr double REC_2020_PRIMARIES[3][2] = { { 0.708, 0.292 }, { 0.170, 0.797 }, { 0.131, 0.046 } };
 constexpr double DCI_P3_PRIMARIES[3][2] = { { 0.680, 0.320 } , { 0.265, 0.690 }, { 0.150, 0.060 } };

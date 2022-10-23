@@ -291,10 +291,11 @@ zimg::colorspace::ColorPrimaries translate_primaries(zimg_color_primaries_e prim
 {
 	using zimg::colorspace::ColorPrimaries;
 
-	static constexpr const zimg::static_map<zimg_color_primaries_e, ColorPrimaries, 12> map{
+	static constexpr const zimg::static_map<zimg_color_primaries_e, ColorPrimaries, 13> map{
 		{ ZIMG_PRIMARIES_BT470_M,     ColorPrimaries::REC_470_M },
 		{ ZIMG_PRIMARIES_BT470_BG,    ColorPrimaries::REC_470_BG },
 		{ ZIMG_PRIMARIES_BT709,       ColorPrimaries::REC_709 },
+		{ ZIMG_PRIMARIES_PROPHOTO,    ColorPrimaries::PROPHOTORGB },
 		{ ZIMG_PRIMARIES_UNSPECIFIED, ColorPrimaries::UNSPECIFIED },
 		{ ZIMG_PRIMARIES_ST170_M,     ColorPrimaries::SMPTE_C },
 		{ ZIMG_PRIMARIES_ST240_M,     ColorPrimaries::SMPTE_C },

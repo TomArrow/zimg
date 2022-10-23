@@ -59,6 +59,7 @@ enum class ColorPrimaries {
 	DCI_P3,
 	DCI_P3_D65,
 	EBU_3213_E,
+	PROPHOTORGB
 };
 
 /**

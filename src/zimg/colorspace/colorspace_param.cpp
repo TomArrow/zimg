@@ -83,6 +83,9 @@ void get_primaries_xy(double out[3][2], ColorPrimaries primaries)
 	case ColorPrimaries::REC_709:
 		memcpy(out, REC_709_PRIMARIES, sizeof(REC_709_PRIMARIES));
 		break;
+	case ColorPrimaries::PROPHOTORGB:
+		memcpy(out, PROPHOTORGB_PRIMARIES, sizeof(PROPHOTORGB_PRIMARIES));
+		break;
 	case ColorPrimaries::FILM:
 		memcpy(out, FILM_PRIMARIES, sizeof(FILM_PRIMARIES));
 		break;
