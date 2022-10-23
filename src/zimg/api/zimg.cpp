@@ -267,7 +267,7 @@ zimg::colorspace::TransferCharacteristics translate_transfer(zimg_transfer_chara
 {
 	using zimg::colorspace::TransferCharacteristics;
 
-	static constexpr const zimg::static_map<zimg_transfer_characteristics_e, TransferCharacteristics, 15> map{
+	static constexpr const zimg::static_map<zimg_transfer_characteristics_e, TransferCharacteristics, 16> map{
 		{ ZIMG_TRANSFER_BT709,         TransferCharacteristics::REC_709 },
 		{ ZIMG_TRANSFER_UNSPECIFIED,   TransferCharacteristics::UNSPECIFIED },
 		{ ZIMG_TRANSFER_ST240_M,       TransferCharacteristics::SMPTE_240M },
@@ -283,6 +283,7 @@ zimg::colorspace::TransferCharacteristics translate_transfer(zimg_transfer_chara
 		{ ZIMG_TRANSFER_LOG_316,       TransferCharacteristics::LOG_316 },
 		{ ZIMG_TRANSFER_ST2084,        TransferCharacteristics::ST_2084 },
 		{ ZIMG_TRANSFER_ARIB_B67,      TransferCharacteristics::ARIB_B67 },
+		{ ZIMG_TRANSFER_PROPHOTORGB,   TransferCharacteristics::PROPHOTORGB },
 	};
 	return search_itu_enum_map(map, transfer, "unrecognized transfer characteristics");
 }
@@ -295,7 +296,6 @@ zimg::colorspace::ColorPrimaries translate_primaries(zimg_color_primaries_e prim
 		{ ZIMG_PRIMARIES_BT470_M,     ColorPrimaries::REC_470_M },
 		{ ZIMG_PRIMARIES_BT470_BG,    ColorPrimaries::REC_470_BG },
 		{ ZIMG_PRIMARIES_BT709,       ColorPrimaries::REC_709 },
-		{ ZIMG_PRIMARIES_PROPHOTO,    ColorPrimaries::PROPHOTORGB },
 		{ ZIMG_PRIMARIES_UNSPECIFIED, ColorPrimaries::UNSPECIFIED },
 		{ ZIMG_PRIMARIES_ST170_M,     ColorPrimaries::SMPTE_C },
 		{ ZIMG_PRIMARIES_ST240_M,     ColorPrimaries::SMPTE_C },
@@ -305,6 +305,7 @@ zimg::colorspace::ColorPrimaries translate_primaries(zimg_color_primaries_e prim
 		{ ZIMG_PRIMARIES_ST431_2,     ColorPrimaries::DCI_P3 },
 		{ ZIMG_PRIMARIES_ST432_1,     ColorPrimaries::DCI_P3_D65 },
 		{ ZIMG_PRIMARIES_EBU3213_E,   ColorPrimaries::EBU_3213_E },
+		{ ZIMG_PRIMARIES_PROPHOTO,    ColorPrimaries::PROPHOTORGB },
 	};
 	return search_itu_enum_map(map, primaries, "unrecognized color primaries");
 }

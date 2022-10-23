@@ -22,6 +22,8 @@ constexpr float SMPTE_240M_BETA  = 0.022821585529445f;
 constexpr float SRGB_ALPHA = 1.055010718947587f;
 constexpr float SRGB_BETA = 0.003041282560128f;
 
+constexpr float PROHOTORGB_ET = 1.0f / 512.0f;
+
 constexpr float ST2084_M1 = 0.1593017578125f;
 constexpr float ST2084_M2 = 78.84375f;
 constexpr float ST2084_C1 = 0.8359375f;
@@ -220,6 +222,31 @@ float srgb_inverse_eotf(float x) noexcept
 	return x;
 }
 
+
+float prophotorgb_eotf(float x) noexcept
+{
+	x = std::max(x, 0.0f); // I should technically also clamp down on values over 1 according to specs but whatever. I like my superbrights, shoot me.
+
+	if (x < 16.00f * PROHOTORGB_ET)
+		x = x / 16.00f;
+	else
+		x = zimg_x_powf(x, 1.8f);
+
+	return x;
+}
+
+float prophotorgb_inverse_eotf(float x) noexcept
+{
+	x = std::max(x, 0.0f); // I should technically also clamp down on values over 1 according to specs but whatever. I like my superbrights, shoot me.
+
+	if (x < PROHOTORGB_ET)
+		x = x * 16.00f;
+	else
+		x = zimg_x_powf(x, 1.0f / 1.8f);
+
+	return x;
+}
+
 // Handle values in the range [0.0-1.0] such that they match a legacy CRT.
 float xvycc_eotf(float x) noexcept
 {
@@ -338,6 +365,10 @@ TransferFunction select_transfer_function(TransferCharacteristics transfer, doub
 	case TransferCharacteristics::SRGB:
 		func.to_linear = srgb_eotf;
 		func.to_gamma = srgb_inverse_eotf;
+		break;
+	case TransferCharacteristics::PROPHOTORGB:
+		func.to_linear = prophotorgb_eotf;
+		func.to_gamma = prophotorgb_inverse_eotf;
 		break;
 	case TransferCharacteristics::ST_2084:
 		func.to_linear = scene_referred ? st_2084_inverse_oetf : st_2084_eotf;

@@ -258,6 +258,8 @@ typedef PowerFunction<avx512constants::Rec1886EOTF, false> FuncRec1886EOTF;
 typedef PowerFunction<avx512constants::Rec1886InverseEOTF, true> FuncRec1886InverseEOTF;
 typedef SRGBPowerFunction<avx512constants::SRGBEOTF, true, false> FuncSRGBEOTF;
 typedef SRGBPowerFunction<avx512constants::SRGBInverseEOTF, false, true> FuncSRGBInverseEOTF;
+typedef SRGBPowerFunction<avx512constants::PROPHOTORGBEOTF, true, false> FuncPROPHOTORGBEOTF;
+typedef SRGBPowerFunction<avx512constants::PROPHOTORGBInverseEOTF, false, true> FuncPROPHOTORGBInverseEOTF;
 typedef SegmentedPolynomial<avx512constants::ST2084EOTF, false, false> FuncST2084EOTF;
 typedef SegmentedPolynomial<avx512constants::ST2084InverseEOTF, true, true> FuncST2084InverseEOTF;
 
@@ -330,6 +332,8 @@ std::unique_ptr<Operation> create_gamma_operation_avx512(const TransferFunction 
 		return std::make_unique<GammaOperationAVX512<FuncRec1886InverseEOTF>>(transfer.to_gamma_scale);
 	else if (transfer.to_gamma == srgb_inverse_eotf)
 		return std::make_unique<GammaOperationAVX512<FuncSRGBInverseEOTF>>(transfer.to_gamma_scale);
+	else if (transfer.to_gamma == prophotorgb_inverse_eotf)
+		return std::make_unique<GammaOperationAVX512<FuncPROPHOTORGBInverseEOTF>>(transfer.to_gamma_scale);
 	else if (transfer.to_gamma == st_2084_inverse_eotf)
 		return std::make_unique<GammaOperationAVX512<FuncST2084InverseEOTF>>(transfer.to_gamma_scale);
 
@@ -345,6 +349,8 @@ std::unique_ptr<Operation> create_inverse_gamma_operation_avx512(const TransferF
 		return std::make_unique<GammaOperationAVX512<FuncRec1886EOTF>>(transfer.to_linear_scale);
 	else if (transfer.to_linear == srgb_eotf)
 		return std::make_unique<GammaOperationAVX512<FuncSRGBEOTF>>(transfer.to_linear_scale);
+	else if (transfer.to_linear == prophotorgb_eotf)
+		return std::make_unique<GammaOperationAVX512<FuncPROPHOTORGBEOTF>>(transfer.to_linear_scale);
 	else if (transfer.to_linear == st_2084_eotf)
 		return std::make_unique<GammaOperationAVX512<FuncST2084EOTF>>(transfer.to_linear_scale);
 

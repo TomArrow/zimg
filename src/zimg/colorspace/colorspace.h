@@ -45,6 +45,7 @@ enum class TransferCharacteristics {
 	SRGB,
 	ST_2084,
 	ARIB_B67,
+	PROPHOTORGB
 };
 
 enum class ColorPrimaries {

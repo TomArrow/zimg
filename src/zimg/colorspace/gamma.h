@@ -47,6 +47,9 @@ float xvycc_inverse_oetf(float x) noexcept;
 float srgb_eotf(float x) noexcept;
 float srgb_inverse_eotf(float x) noexcept;
 
+float prophotorgb_eotf(float x) noexcept;
+float prophotorgb_inverse_eotf(float x) noexcept;
+
 float st_2084_eotf(float x) noexcept;
 float st_2084_inverse_eotf(float x) noexcept;
 

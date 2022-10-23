@@ -45,6 +45,29 @@ struct SRGBInverseEOTF : private Rec1886InverseEOTF {
 	using Rec1886InverseEOTF::table;
 };
 
+
+struct PROPHOTORGBEOTF : private Rec1886EOTF {
+	static constexpr float knee = 16.0f * 1.0f / 512.0f;
+	static constexpr float linear_scale = 1.0f / 16.0f;
+
+	static constexpr float power_scale = 1.0f;
+	static constexpr float power_offset = 0;
+
+	using Rec1886EOTF::horner;
+	using Rec1886EOTF::table;
+};
+
+struct PROPHOTORGBInverseEOTF : private Rec1886InverseEOTF {
+	static constexpr float knee = 1.0f/512.0f;
+	static constexpr float linear_scale = 16.0f;
+
+	static constexpr float power_scale = 1.0f;
+	static constexpr float power_offset = 0;
+
+	using Rec1886InverseEOTF::horner;
+	using Rec1886InverseEOTF::table;
+};
+
 struct ST2084EOTF {
 	// 32 4-th order polynomials on uniform domain [i / 32, (i + 1) / 32).
 	static const float horner0 alignas(64)[32];
@@ -69,6 +92,9 @@ float rec_1886_inverse_eotf(float x);
 
 float srgb_eotf(float x);
 float srgb_inverse_eotf(float x);
+
+float prophotorgb_eotf(float x);
+float prophotorgb_inverse_eotf(float x);
 
 float st_2084_eotf(float x);
 float st_2084_inverse_eotf(float x);

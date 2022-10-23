@@ -306,6 +306,16 @@ float srgb_inverse_eotf(float x)
 	return srgb_power_function<SRGBInverseEOTF, false>(x);
 }
 
+float prophotorgb_eotf(float x)
+{
+	return srgb_power_function<PROPHOTORGBEOTF, true>(x);
+}
+
+float prophotorgb_inverse_eotf(float x)
+{
+	return srgb_power_function<PROPHOTORGBInverseEOTF, false>(x);
+}
+
 float st_2084_eotf(float x)
 {
 	return segmented_polynomial<ST2084EOTF, false>(x);

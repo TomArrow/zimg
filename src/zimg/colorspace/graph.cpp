@@ -57,12 +57,14 @@ EnumRange<MatrixCoefficients> all_matrix()
 
 EnumRange<TransferCharacteristics> all_transfer()
 {
-	return{ TransferCharacteristics::UNSPECIFIED, TransferCharacteristics::ARIB_B67 };
+	//return{ TransferCharacteristics::UNSPECIFIED, TransferCharacteristics::ARIB_B67 };
+	return{ TransferCharacteristics::UNSPECIFIED, TransferCharacteristics::PROPHOTORGB };
 }
 
 EnumRange<ColorPrimaries> all_primaries()
 {
-	return{ ColorPrimaries::UNSPECIFIED, ColorPrimaries::DCI_P3_D65 };
+	//return{ ColorPrimaries::UNSPECIFIED, ColorPrimaries::DCI_P3_D65 };
+	return{ ColorPrimaries::UNSPECIFIED, ColorPrimaries::PROPHOTORGB };
 }
 
 constexpr bool is_valid_2020cl(const ColorspaceDefinition &csp)
